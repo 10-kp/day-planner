@@ -34,18 +34,30 @@
     <div class="container">
       <!-- Timeblocks go here -->
 
-      <div class="container">
+      <!-- Create the first hour i.e. 8AM -->
+      <!-- 2 classes - row & time block -->
+      <!-- Color changes for past events -->
+       <div id ="hour1" class ="row time-block past">
+           
+        <!-- grid for the time and link to hour CSS -->
+            <div class = "col-md-1 hour">8 AM</div>
+            
+            <!-- multi-line text input -->
+            <!-- Grid size for colum 10 and linked to the CSS description -->
+            <textarea class = "col-md-10 description"></textarea>
 
-		<!-- Timeblocks start here -->
-		<div id="hour8" class="row time-block past">
-            <div class="col-md-1 hour">
-                8 AM
-            </div>
-            <textarea class="col-md-10 description"></textarea>
-            <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-        </div>
+            <!-- link to the "save btn" in CSS and use column size 1-->
+            <!-- Using the save icon button -->
+            <button class ="btn saveBtn col-md-1"><i class = "fas fa-save"></i></button>
+       </div>
 
-		<div id="hour9" class="row time-block past">
+       <div id ="hour2" class ="row time-block">
+           <div class = "col-md-1">9 AM</div>
+           <textarea class = "col-md-10"></textarea>
+           <button class = "btn saveBtn col-md-10"><i class = "fas fa-save"></button>i></button>
+       </div>
+
+		<!-- <div id="hour9" class="row time-block past">
             <div class="col-md-1 hour">
                 9 AM
             </div>
@@ -61,7 +73,7 @@
             <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
         </div>
 
-		<div id="hour10=1" class="row time-block past">
+		<div id="hour11" class="row time-block past">
             <div class="col-md-1 hour">
                 11 AM
             </div>
@@ -115,7 +127,7 @@
             </div>
             <textarea class="col-md-10 description">            </textarea>
             <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-        </div>
+        </div> -->
 
 	</div>
     </div>
