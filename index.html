@@ -26,9 +26,9 @@
     <header class="jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
-      <p id="currentDay" class="lead">Monday, Feb 28, 2021</p>
     <!-- HOW TO ADD CURRENT DATE AUTOMATICALLY? -->
-      
+      <p id="currentDay" class="lead"></p>
+    
       
     </header>
     <div class="container">
@@ -44,95 +44,144 @@
             
             <!-- multi-line text input -->
             <!-- Grid size for colum 10 and linked to the CSS description -->
-            <textarea class = "col-md-10 description"></textarea>
+            <textarea id = "textarea" class = "col-md-10 description"></textarea>
 
             <!-- link to the "save btn" in CSS and use column size 1-->
-            <!-- Using the save icon button -->
-            <button class ="btn saveBtn col-md-1"><i class = "fas fa-save"></i></button>
+            <button class ="btn saveBtn col-md-1">
+                <!-- Using the save icon button -->
+                <i class = "fas fa-save"></i></button>
        </div>
 
-       <div id ="hour2" class ="row time-block">
-           <div class = "col-md-1">9 AM</div>
-           <textarea class = "col-md-10"></textarea>
-           <button class = "btn saveBtn col-md-10"><i class = "fas fa-save"></button>i></button>
-       </div>
-
-		<!-- <div id="hour9" class="row time-block past">
-            <div class="col-md-1 hour">
-                9 AM
-            </div>
-            <textarea class="col-md-10 description">            </textarea>
-            <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
+        <div id ="hour" class ="row time-block past">
+           <div class = "col-md-1 hour">9 AM</div>
+           <textarea id = "textarea" class = "col-md-10 description"></textarea>
+           <button class = "btn saveBtn col-md-1">
+               <i class = "fas fa-save"></i></button>
         </div>
 
-		<div id="hour10" class="row time-block past">
-            <div class="col-md-1 hour">
-                10 AM
-            </div>
-            <textarea class="col-md-10 description">            </textarea>
-            <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-        </div>
+        <div id ="hour" class ="row time-block past">
+            <div class = "col-md-1 hour">10 AM</div>
+            <textarea id = "textarea" class = "col-md-10 description"></textarea>
+            <button class = "btn saveBtn col-md-1">
+                <i class = "fas fa-save"></i></button>
+         </div>
 
-		<div id="hour11" class="row time-block past">
-            <div class="col-md-1 hour">
-                11 AM
-            </div>
-            <textarea class="col-md-10 description">            </textarea>
-            <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-        </div>
+         <div id ="hour" class ="row time-block past">
+            <div class = "col-md-1 hour">11 AM</div>
+            <textarea id = "textarea" class = "col-md-10 description"></textarea>
+            <button class = "btn saveBtn col-md-1">
+                <i class = "fas fa-save"></i></button>
+         </div>
+        
+         <div id ="hour" class ="row time-block past">
+            <div class = "col-md-1 hour">12 PM</div>
+            <textarea id = "textarea" class = "col-md-10 description"></textarea>
+            <button class = "btn saveBtn col-md-1">
+                <i class = "fas fa-save"></i></button>
+         </div>
 
-		<div id="hour12" class="row time-block past">
-            <div class="col-md-1 hour">
-                12 PM
-            </div>
-            <textarea class="col-md-10 description">            </textarea>
-            <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-        </div>
+         <div id ="hour" class ="row time-block past">
+            <div class = "col-md-1 hour">1 PM</div>
+            <textarea id = "textarea" class = "col-md-10 description"></textarea>
+            <button class = "btn saveBtn col-md-1">
+                <i class = "fas fa-save"></i></button>
+         </div>
 
-		<div id="hour13" class="row time-block past">
-            <div class="col-md-1 hour">
-                1 PM
-            </div>
-            <textarea class="col-md-10 description">            </textarea>
-            <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-        </div>
+         <div id ="hour" class ="row time-block past">
+            <div class = "col-md-1 hour">2 PM</div>
+            <textarea id = "textarea" class = "col-md-10 description"></textarea>
+            <button class = "btn saveBtn col-md-1">
+                <i class = "fas fa-save"></i></button>
+         </div>
 
-		<div id="hour14" class="row time-block past">
-            <div class="col-md-1 hour">
-                2 PM
-            </div>
-            <textarea class="col-md-10 description">            </textarea>
-            <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-        </div>
+         <div id ="hour" class ="row time-block past">
+            <div class = "col-md-1 hour">3 PM</div>
+            <textarea id = "textarea" class = "col-md-10 description"></textarea>
+            <button class = "btn saveBtn col-md-1">
+                <i class = "fas fa-save"></i></button>
+         </div>
 
-		<div id="hour15" class="row time-block past">
-            <div class="col-md-1 hour">
-                3 PM
-            </div>
-            <textarea class="col-md-10 description">            </textarea>
-            <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-        </div>
-
-		<div id="hour16" class="row time-block past">
-            <div class="col-md-1 hour">
-                4 PM
-            </div>
-            <textarea class="col-md-10 description">            </textarea>
-            <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-        </div>
-
-		<div id="hour17" class="row time-block past">
-            <div class="col-md-1 hour">
-                5 PM
-            </div>
-            <textarea class="col-md-10 description">            </textarea>
-            <button class="btn saveBtn col-md-1"><i class="fas fa-save"></i></button>
-        </div> -->
-
+         <div id ="hour" class ="row time-block past">
+            <div class = "col-md-1 hour">4 PM</div>
+            <textarea id = "textarea" class = "col-md-10 description"></textarea>
+            <button class = "btn saveBtn col-md-1">
+                <i class = "fas fa-save"></i></button>
+         </div>
+        
+         <div id ="hour" class ="row time-block past">
+            <div class = "col-md-1 hour">5 PM</div>
+            <textarea id = "textarea" class = "col-md-10 description"></textarea>
+            <button class = "btn saveBtn col-md-1">
+                <i class = "fas fa-save"></i></button>
+         </div>
 	</div>
-    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <script>
+        //Moment to work with date & time
+        //Create a variable for the momemt ()
+        var dateNow = moment();
+        //Variable for current date format
+          var dateNow = dateNow.format('MM-DD-YYY');
+          //variable for the date in the header
+          var headerDate = dateNow.format('MMM DD YYYY');
+          
+          //returns HTML content for headerDate in from the current day ID in class "lead"
+          document.getElementById("currentDay").innerHTML = headerDate;
+          
+          updateHour();
+        // Create a function to update the current hour in the planner
+          function updateHour(){
+            var presentHour = moment().hours();
+            
+            // Jquery the "time-block" child class of the parent class "container"
+            $(".time-block").each(function() {
+                // variable of the hout of each block and parses sting argument for interger
+                //$(this) to wrap element with the value of the ids and split into array
+                var hourBlock = parseInt($(this).attr("id").split("-")[0]);
+                
+                // Loop if the time is not current 
+                if (hourBlock < presentHour) {
+                    $(this).addClass("past");
+                }
+                else if (hourBlock == presentHour) {
+                    $(this).removeClass("past");
+                    $(this).addClass("present");
+                }
+                else {
+                    $(this).removeClass("past");
+                    $(this).removeClass("present");
+                    $(this).addClass("future");
+                }
+                
+                var childText = $(this).children('textarea');
+                var childTextID = childText.attr('id');
+                var keyID = dateNowID + '_' + childTextID
+                var childValue = localStorage.getItem(keyID);
+                
+                if(childValue){
+                    childText.val(childValue);
+                }
+            });
+          };
+          
+          $(document).ready(function(){
+            $('body').on('click','.saveBtn',function(e){
+                e.stopImmediatePropagation();
+                e.preventDefault();
+                
+                var textInput = $(this).siblings('textarea');
+                var textID = textInput.attr('id');
+                var keyID = dateNowID + '_' + textID;
+                var textValue = textInput.val();
+                
+                localStorage.setItem(keyID,textValue);
+            });
+          });
+    </script>
+    
   </body>
 </html>
+˜
