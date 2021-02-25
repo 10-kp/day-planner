@@ -18,7 +18,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
     <title>Work Day Scheduler</title>
   </head>
 
@@ -124,9 +124,9 @@
         //Create a variable for the momemt ()
         var dateNow = moment();
         //Variable for current date format
-          var dateNow = dateNow.format('MM-DD-YYY');
+          var dateNow = dateNow.format('YYYY-MM-DD');
           //variable for the date in the header
-          var headerDate = dateNow.format('MMM DD YYYY');
+          var headerDate = dateNow.format('dddd MMM DD YYYY');
           
           //returns HTML content for headerDate in from the current day ID in class "lead"
           document.getElementById("currentDay").innerHTML = headerDate;
@@ -136,26 +136,29 @@
           function updateHour(){
             var presentHour = moment().hours();
             
-            // Jquery the "time-block" child class of the parent class "container"
+            // jQuery the "time-block" child class of the parent class "container"
             $(".time-block").each(function() {
-                // variable of the hout of each block and parses sting argument for interger
-                //$(this) to wrap element with the value of the ids and split into array
+                // variable of the hour of each block and parses sting argument for interger
+                //$(this) to wrap element with the value of the ids and split with - index 0
                 var hourBlock = parseInt($(this).attr("id").split("-")[0]);
                 
-                // Loop if the time is not current 
+                // Loop for the hour.
+                // if the time is the past 
                 if (hourBlock < presentHour) {
                     $(this).addClass("past");
                 }
+                //Move to the  present if in the current hour and remove past class
                 else if (hourBlock == presentHour) {
                     $(this).removeClass("past");
                     $(this).addClass("present");
                 }
+                //Move to future class
                 else {
                     $(this).removeClass("past");
                     $(this).removeClass("present");
                     $(this).addClass("future");
                 }
-                
+                //variables for children
                 var childText = $(this).children('textarea');
                 var childTextID = childText.attr('id');
                 var keyID = dateNowID + '_' + childTextID
@@ -166,12 +169,14 @@
                 }
             });
           };
-          
+          //Other events not to be called 
+          //avoid bubbling
           $(document).ready(function(){
-            $('body').on('click','.saveBtn',function(e){
+            $('body').on('click','.saveBtn',function(event){
                 e.stopImmediatePropagation();
                 e.preventDefault();
                 
+                //varrable for setting key items
                 var textInput = $(this).siblings('textarea');
                 var textID = textInput.attr('id');
                 var keyID = dateNowID + '_' + textID;
