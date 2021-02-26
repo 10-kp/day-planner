@@ -129,7 +129,9 @@
           var headerDate = dateNow.format('dddd MMM DD YYYY');
           
           //returns HTML content for headerDate in from the current day ID in class "lead"
-          document.getElementById("currentDay").innerHTML = headerDate;
+         // document.getElementById("currentDay").innerHTML = headerDate;
+          
+          var headerDate = $('#currentDay')
           
           updateHour();
         // Create a function to update the current hour in the planner
