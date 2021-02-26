@@ -149,16 +149,16 @@
 
             //Prevent refresh when save btn is clicked
             function renderStoredInputs(){
-                $(".btn").each(function(){
+                $(".savebtn").each(function(){
                     var inputId = $(this).attr("id");
                     $(this).val(localStorage.getItem(inputId));
                 });
             };
 
             //SSave user input in local storage
-            $("body").click(function(){
-                var scheduleInputs = $(this).siblings(".btn").val();
-                var inputsLocation = $(this).siblings(".btn").attr("id");
+            $('.saveBtn').click(function(){
+                var scheduleInputs = $(this).siblings(".saveBtn").val();
+                var inputsLocation = $(this).siblings(".saveBtn").attr("id");
                 
                 localStorage.setItem(inputsLocation,scheduleInputs);
             });
