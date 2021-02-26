@@ -101,14 +101,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     
     <script>
+
         $(document).ready(function(){
             var hour = parseInt(moment().hours());
+
         $("#currentDay").text(moment().format('MMMM Do YYYY, h:mm:ss a'));
+
             //Color coding schedule dependant upon hour
             function colorSchedule(){
+
                 $(".time-block").each(function(){
+
                     var blockHour = $(this).attr("id");
                     var rowHour = parseInt(blockHour);
+                    
                     if (rowHour === hour){
                         $(this).addClass("present");
                     } else if (rowHour < hour){
@@ -127,8 +133,10 @@
             };
             //SSave user input in local storage
             $('.saveBtn').click(function(){
+
                 var scheduleInputs = $(this).siblings(".hour").text();
                 var inputsLocation = $(this).siblings(".description").val();
+
                 localStorage.setItem(scheduleInputs, inputsLocation);
             });
             colorSchedule();
