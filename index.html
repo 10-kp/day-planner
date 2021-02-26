@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,132 +20,104 @@
     <link rel="stylesheet" href="./assets/style.css" />
     <title>Work Day Scheduler</title>
   </head>
-
   <body>
     <header class="jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
-    <!-- HOW TO ADD CURRENT DATE AUTOMATICALLY? -->
       <p id="currentDay" class="lead"></p>
-    
-      
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
-
       <!-- Create the first hour i.e. 8AM -->
       <!-- 2 classes - row & time block -->
       <!-- Color changes for past events -->
-
         <!-- grid for the time and link to hour CSS -->
         <!-- multi-line text input -->
         <!-- Grid size for colum 10 and linked to the CSS description -->
         <!-- link to the "save btn" in CSS and use column size 1-->
         <!-- Using the save icon button -->
-
-       <div id ="hour" class ="row time-block past">
+       <div id ="8" class ="row time-block past">
         <div class = "col-md-1 hour">8 AM</div>
         <textarea id = "textarea" class = "col-md-10 description"></textarea>
         <button class = "btn saveBtn col-md-1">
             <i class = "fas fa-save"></i></button>
         </div>
-        
-        <div id ="hour" class ="row time-block past">
+        <div id ="9" class ="row time-block past">
            <div class = "col-md-1 hour">9 AM</div>
            <textarea id = "textarea" class = "col-md-10 description"></textarea>
            <button class = "btn saveBtn col-md-1">
                <i class = "fas fa-save"></i></button>
         </div>
-
-        <div id ="hour" class ="row time-block past">
+        <div id ="10" class ="row time-block past">
             <div class = "col-md-1 hour">10 AM</div>
             <textarea id = "textarea" class = "col-md-10 description"></textarea>
             <button class = "btn saveBtn col-md-1">
                 <i class = "fas fa-save"></i></button>
          </div>
-
-         <div id ="hour" class ="row time-block past">
+         <div id ="11" class ="row time-block past">
             <div class = "col-md-1 hour">11 AM</div>
             <textarea id = "textarea" class = "col-md-10 description"></textarea>
             <button class = "btn saveBtn col-md-1">
                 <i class = "fas fa-save"></i></button>
          </div>
-        
-         <div id ="hour" class ="row time-block past">
+         <div id ="12" class ="row time-block past">
             <div class = "col-md-1 hour">12 PM</div>
             <textarea id = "textarea" class = "col-md-10 description"></textarea>
             <button class = "btn saveBtn col-md-1">
                 <i class = "fas fa-save"></i></button>
          </div>
-
-         <div id ="hour" class ="row time-block past">
+         <div id ="13" class ="row time-block past">
             <div class = "col-md-1 hour">1 PM</div>
             <textarea id = "textarea" class = "col-md-10 description"></textarea>
             <button class = "btn saveBtn col-md-1">
                 <i class = "fas fa-save"></i></button>
          </div>
-
-         <div id ="hour" class ="row time-block past">
+         <div id ="14" class ="row time-block past">
             <div class = "col-md-1 hour">2 PM</div>
             <textarea id = "textarea" class = "col-md-10 description"></textarea>
             <button class = "btn saveBtn col-md-1">
                 <i class = "fas fa-save"></i></button>
          </div>
-
-         <div id ="hour" class ="row time-block past">
+         <div id ="15" class ="row time-block past">
             <div class = "col-md-1 hour">3 PM</div>
             <textarea id = "textarea" class = "col-md-10 description"></textarea>
             <button class = "btn saveBtn col-md-1">
                 <i class = "fas fa-save"></i></button>
          </div>
-
-         <div id ="hour" class ="row time-block past">
+         <div id ="16" class ="row time-block past">
             <div class = "col-md-1 hour">4 PM</div>
             <textarea id = "textarea" class = "col-md-10 description"></textarea>
             <button class = "btn saveBtn col-md-1">
                 <i class = "fas fa-save"></i></button>
          </div>
-        
-         <div id ="hour" class ="row time-block past">
+         <div id ="17" class ="row time-block past">
             <div class = "col-md-1 hour">5 PM</div>
             <textarea id = "textarea" class = "col-md-10 description"></textarea>
             <button class = "btn saveBtn col-md-1">
                 <i class = "fas fa-save"></i></button>
          </div>
-	</div>
-
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-
+    
     <script>
-
-
         $(document).ready(function(){
-            var hour = moment().hours();
-
+            var hour = parseInt(moment().hours());
         $("#currentDay").text(moment().format('MMMM Do YYYY, h:mm:ss a'));
-
             //Color coding schedule dependant upon hour
             function colorSchedule(){
                 $(".time-block").each(function(){
-                    
                     var blockHour = $(this).attr("id");
-
                     var rowHour = parseInt(blockHour);
-
                     if (rowHour === hour){
                         $(this).addClass("present");
-
                     } else if (rowHour < hour){
-
                         $(this).addClass("past");
-
                     } else {
                         $(this).addClass("future");
                     };
                 });
             };
-
             //Prevent refresh when save btn is clicked
             function renderStoredInputs(){
                 $(".savebtn").each(function(){
@@ -154,21 +125,16 @@
                     $(this).val(localStorage.getItem(inputId));
                 });
             };
-
             //SSave user input in local storage
             $('.saveBtn').click(function(){
-                var scheduleInputs = $(this).siblings(".saveBtn").val();
-                var inputsLocation = $(this).siblings(".saveBtn").attr("id");
-                
-                localStorage.setItem(inputsLocation,scheduleInputs);
+                var scheduleInputs = $(this).siblings(".hour").text();
+                var inputsLocation = $(this).siblings(".description").val();
+                localStorage.setItem(scheduleInputs, inputsLocation);
             });
-
             colorSchedule();
             setInterval(colorSchedule,1000);
             renderStoredInputs();
-
             });
     </script>
-    
   </body>
 </html>
