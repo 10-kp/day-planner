@@ -37,21 +37,20 @@
       <!-- Create the first hour i.e. 8AM -->
       <!-- 2 classes - row & time block -->
       <!-- Color changes for past events -->
-       <div id ="hour1" class ="row time-block past">
-           
+
         <!-- grid for the time and link to hour CSS -->
-            <div class = "col-md-1 hour">8 AM</div>
-            
-            <!-- multi-line text input -->
-            <!-- Grid size for colum 10 and linked to the CSS description -->
-            <textarea id = "textarea" class = "col-md-10 description"></textarea>
+        <!-- multi-line text input -->
+        <!-- Grid size for colum 10 and linked to the CSS description -->
+        <!-- link to the "save btn" in CSS and use column size 1-->
+        <!-- Using the save icon button -->
 
-            <!-- link to the "save btn" in CSS and use column size 1-->
-            <button class ="btn saveBtn col-md-1">
-                <!-- Using the save icon button -->
-                <i class = "fas fa-save"></i></button>
-       </div>
-
+       <div id ="hour" class ="row time-block past">
+        <div class = "col-md-1 hour">8 AM</div>
+        <textarea id = "textarea" class = "col-md-10 description"></textarea>
+        <button class = "btn saveBtn col-md-1">
+            <i class = "fas fa-save"></i></button>
+        </div>
+        
         <div id ="hour" class ="row time-block past">
            <div class = "col-md-1 hour">9 AM</div>
            <textarea id = "textarea" class = "col-md-10 description"></textarea>
@@ -120,75 +119,56 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
     <script>
-        //Moment to work with date & time
-        //Create a variable for the momemt ()
-        var dateNow = moment();
-        //Variable for current date format
-          var dateNow = dateNow.format('YYYY-MM-DD');
-          //variable for the date in the header
-          var headerDate = dateNow.format('dddd MMM DD YYYY');
-          
-          //returns HTML content for headerDate in from the current day ID in class "lead"
-         // document.getElementById("currentDay").innerHTML = headerDate;
-          
-          var headerDate = $('#currentDay')
-          
-          updateHour();
-        // Create a function to update the current hour in the planner
-          function updateHour(){
-            var presentHour = moment().hours();
-            
-            // jQuery the "time-block" child class of the parent class "container"
-            $(".time-block").each(function() {
-                // variable of the hour of each block and parses sting argument for interger
-                //$(this) to wrap element with the value of the ids and split with - index 0
-                var hourBlock = parseInt($(this).attr("id").split("-")[0]);
+
+
+        $(document).ready(function(){
+            var hour = moment().hours();
+
+        $("#currentDay").text(moment().format('MMMM Do YYYY, h:mm:ss a'));
+
+            //Color coding schedule dependant upon hour
+            function colorSchedule(){
+                $(".time-block").each(function(){
+                    
+                    var blockHour = $(this).attr("id");
+
+                    var rowHour = parseInt(blockHour);
+
+                    if (rowHour === hour){
+                        $(this).addClass("present");
+
+                    } else if (rowHour < hour){
+
+                        $(this).addClass("past");
+
+                    } else {
+                        $(this).addClass("future");
+                    };
+                });
+            };
+
+            //Prevent refresh when save btn is clicked
+            function renderStoredInputs(){
+                $(".btn").each(function(){
+                    var inputId = $(this).attr("id");
+                    $(this).val(localStorage.getItem(inputId));
+                });
+            };
+
+            //SSave user input in local storage
+            $("body").click(function(){
+                var scheduleInputs = $(this).siblings(".btn").val();
+                var inputsLocation = $(this).siblings(".btn").attr("id");
                 
-                // Loop for the hour.
-                // if the time is the past 
-                if (hourBlock < presentHour) {
-                    $(this).addClass("past");
-                }
-                //Move to the  present if in the current hour and remove past class
-                else if (hourBlock == presentHour) {
-                    $(this).removeClass("past");
-                    $(this).addClass("present");
-                }
-                //Move to future class
-                else {
-                    $(this).removeClass("past");
-                    $(this).removeClass("present");
-                    $(this).addClass("future");
-                }
-                //variables for children
-                var childText = $(this).children('textarea');
-                var childTextID = childText.attr('id');
-                var keyID = dateNowID + '_' + childTextID
-                var childValue = localStorage.getItem(keyID);
-                
-                if(childValue){
-                    childText.val(childValue);
-                }
+                localStorage.setItem(inputsLocation,scheduleInputs);
             });
-          };
-          //Other events not to be called 
-          //avoid bubbling
-          $(document).ready(function(){
-            $('body').on('click','.saveBtn',function(event){
-                e.stopImmediatePropagation();
-                e.preventDefault();
-                
-                //varrable for setting key items
-                var textInput = $(this).siblings('textarea');
-                var textID = textInput.attr('id');
-                var keyID = dateNowID + '_' + textID;
-                var textValue = textInput.val();
-                
-                localStorage.setItem(keyID,textValue);
+
+            colorSchedule();
+            setInterval(colorSchedule,1000);
+            renderStoredInputs();
+
             });
-          });
     </script>
     
   </body>
 </html>
-˜

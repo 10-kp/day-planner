@@ -19,4 +19,4 @@ HTML
 - Called the function to run the code. Avoid bubbling and other events to be called simultaneously.
 
 CSS 
-- No changes
+- Slight changes to ensure the format in the page is fine.
