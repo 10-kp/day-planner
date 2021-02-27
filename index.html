@@ -101,17 +101,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     
     <script>
-
+        //parse the sting into integer for the time
         $(document).ready(function(){
             var hour = parseInt(moment().hours());
 
+            // Format the id Current Day to display the month, date, year, time
         $("#currentDay").text(moment().format('MMMM Do YYYY, h:mm:ss a'));
 
-            //Color coding schedule dependant upon hour
-            function colorSchedule(){
+            //Use function to change of the color of the block depending on the hour
+            function blockColor(){
 
                 $(".time-block").each(function(){
-
+                    
                     var blockHour = $(this).attr("id");
                     var rowHour = parseInt(blockHour);
                     
@@ -125,23 +126,24 @@
                 });
             };
             //Prevent refresh when save btn is clicked
-            function renderStoredInputs(){
+            function keepInputs (){
                 $(".savebtn").each(function(){
                     var inputId = $(this).attr("id");
                     $(this).val(localStorage.getItem(inputId));
                 });
             };
-            //SSave user input in local storage
+            //Save user input in local storage inlcuding the siblings 
             $('.saveBtn').click(function(){
 
                 var scheduleInputs = $(this).siblings(".hour").text();
                 var inputsLocation = $(this).siblings(".description").val();
-
+                //Call the local storage.
                 localStorage.setItem(scheduleInputs, inputsLocation);
             });
-            colorSchedule();
-            setInterval(colorSchedule,1000);
-            renderStoredInputs();
+            // call the functions blockColor, interval and local storage
+            blockColor();
+            setInterval(blockColor,1000);
+            keepInputs();
             });
     </script>
   </body>
